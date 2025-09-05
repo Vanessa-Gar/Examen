@@ -1,0 +1,36 @@
+program Cronometro;
+uses crt;
+var
+  horas, minutos, segundos: integer;
+
+begin
+  horas := 0;
+  minutos := 0;
+  segundos := 0;
+  
+  writeln('Presiona una tecla para iniciar el cronómetro.');
+  readkey;
+  
+  writeln('Presiona Ctrl+C para detener el cronómetro.');
+
+  repeat
+    delay(1000); // 1000 ms = 1 segundo
+    
+    inc(segundos);
+    if segundos = 60 then
+    begin
+      segundos := 0;
+      inc(minutos);
+      if minutos = 60 then
+      begin
+        minutos := 0;
+        inc(horas);
+      end;
+    end;
+    
+    gotoxy(1, 3); // Posiciona el cursor en la columna 1, fila 3
+    write('Tiempo: ', horas:2, ':', minutos:2, ':', segundos:2);
+    
+  until keypressed; // Sale del bucle si se presiona una tecla
+  
+end.
