@@ -1,0 +1,35 @@
+program ContadorDeLetras;
+uses crt;
+var
+  cadena: string;
+  i: integer;
+  vocales, consonantes: integer;
+  caracter: char;
+
+begin
+  clrscr;
+  vocales := 0;
+  consonantes := 0;
+
+  writeln('Ingresa una cadena de texto:');
+  readln(cadena);
+
+  for i := 1 to length(cadena) do
+  begin
+    caracter := cadena[i];
+    if (caracter >= 'a') and (caracter <= 'z') then
+      caracter := upcase(caracter);
+
+    if (caracter >= 'A') and (caracter <= 'Z') then
+    begin
+      if (caracter = 'A') or (caracter = 'E') or (caracter = 'I') or (caracter = 'O') or (caracter = 'U') then
+        vocales := vocales + 1
+      else
+        consonantes := consonantes + 1;
+    end;
+  end;
+
+  writeln('La cadena tiene ', vocales, ' vocales.');
+  writeln('La cadena tiene ', consonantes, ' consonantes.');
+  readln;
+end.
