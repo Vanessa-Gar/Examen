@@ -1,0 +1,27 @@
+PROGRAM ContadorDeLetras
+  IMPLICIT NONE
+  CHARACTER(LEN=100) :: cadena
+  INTEGER :: i, longitud, vocales, consonantes
+
+  WRITE(*,*) 'Ingresa una cadena de texto:'
+  READ(*,*) cadena
+
+  longitud = LEN_TRIM(cadena)
+  vocales = 0
+  consonantes = 0
+
+  DO i = 1, longitud
+    SELECT CASE (cadena(i:i))
+      CASE ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
+        vocales = vocales + 1
+      CASE ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', &
+            'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z')
+        consonantes = consonantes + 1
+      CASE DEFAULT
+        
+    END SELECT
+  END DO
+
+  WRITE(*,*) 'La cadena tiene ', vocales, ' vocales.'
+  WRITE(*,*) 'La cadena tiene ', consonantes, ' consonantes.'
+END PROGRAM ContadorDeLetras
