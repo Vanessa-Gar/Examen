@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class ContadorDeLetras {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int vocales = 0;
+        int consonantes = 0;
+
+        System.out.print("Ingresa una cadena de texto: ");
+        String cadena = scanner.nextLine();
+
+        cadena = cadena.toLowerCase();
+
+        for (int i = 0; i < cadena.length(); i++) {
+            char caracter = cadena.charAt(i);
+
+            if (caracter >= 'a' && caracter <= 'z') {
+                if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u') {
+                    vocales++;
+                } else {
+                    consonantes++;
+                }
+            }
+        }
+
+        System.out.println("La cadena tiene " + vocales + " vocales.");
+        System.out.println("La cadena tiene " + consonantes + " consonantes.");
+
+        scanner.close();
+    }
+}
