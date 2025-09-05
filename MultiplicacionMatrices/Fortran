@@ -1,0 +1,37 @@
+PROGRAM MatrizMultiplicacion
+  IMPLICIT NONE
+  INTEGER, PARAMETER :: N = 3
+  INTEGER :: A(N, N), B(N, N), C(N, N)
+  INTEGER :: I, J, K
+
+  ! Matrices
+  A = RESHAPE((/1, 2, 3, 4, 5, 6, 7, 8, 9/), (/N, N/))
+  B = RESHAPE((/9, 8, 7, 6, 5, 4, 3, 2, 1/), (/N, N/))
+
+  C = 0
+
+  ! Multiplicacion de matrices
+  DO I = 1, N
+    DO J = 1, N
+      DO K = 1, N
+        C(I, J) = C(I, J) + A(I, K) * B(K, J)
+      END DO
+    END DO
+  END DO
+
+  PRINT *, 'Matriz A:'
+  DO I = 1, N
+    PRINT '(3I5)', (A(I, J), J = 1, N)
+  END DO
+
+  PRINT *, 'Matriz B:'
+  DO I = 1, N
+    PRINT '(3I5)', (B(I, J), J = 1, N)
+  END DO
+
+  PRINT *, 'Resultado de A * B:'
+  DO I = 1, N
+    PRINT '(3I5)', (C(I, J), J = 1, N)
+  END DO
+
+END PROGRAM MatrizMultiplicacion
