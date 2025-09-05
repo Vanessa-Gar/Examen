@@ -1,0 +1,33 @@
+PROGRAM Cronometro
+  IMPLICIT NONE
+  INTEGER :: horas, minutos, segundos
+  INTEGER, PARAMETER :: PAUSA_SEGUNDOS = 1
+
+  segundos = 0
+  minutos = 0
+  horas = 0
+
+  WRITE(*,*) "Presiona Enter para iniciar el cronómetro."
+  READ(*,*)
+  
+  WRITE(*,*) "Presiona Ctrl+C para detener el cronómetro."
+
+  DO
+    segundos = segundos + 1
+    
+    IF (segundos == 60) THEN
+      segundos = 0
+      minutos = minutos + 1
+      IF (minutos == 60) THEN
+        minutos = 0
+        horas = horas + 1
+      END IF
+    END IF
+
+    WRITE(*, FMT='(A, I0.2, A, I0.2, A, I0.2)', ADVANCE='NO') "Tiempo: ", horas, ":", minutos, ":", segundos
+    CALL FLUSH(6) ! Limpia el buffer de salida
+    CALL SLEEP(PAUSA_SEGUNDOS)
+
+  END DO
+
+END PROGRAM Cronometro
