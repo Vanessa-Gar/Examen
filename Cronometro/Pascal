@@ -31,6 +31,6 @@ begin
     gotoxy(1, 3); 
     write('Tiempo: ', horas:2, ':', minutos:2, ':', segundos:2);
     
-  until keypressed; // Sale del bucle si se presiona una tecla
+  until keypressed; 
   
 end.
