@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+int main() {
+    std::string cadena;
+    int vocales = 0;
+    int consonantes = 0;
+
+    std::cout << "Ingresa una cadena de texto: ";
+    std::getline(std::cin, cadena);
+
+    for (char caracter : cadena) {
+        caracter = tolower(caracter);
+        if (isalpha(caracter)) {
+            if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u') {
+                vocales++;
+            } else {
+                consonantes++;
+            }
+        }
+    }
+
+    std::cout << "La cadena tiene " << vocales << " vocales." << std::endl;
+    std::cout << "La cadena tiene " << consonantes << " consonantes." << std::endl;
+
+    return 0;
+}
