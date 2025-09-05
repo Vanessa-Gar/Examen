@@ -1,0 +1,52 @@
+program MatrizMultiplicacion;
+const
+  N = 3;
+type
+  Matriz = array[1..N, 1..N] of integer;
+var
+  A, B, C: Matriz;
+  i, j, k: integer;
+
+begin
+  // Matrices
+  for i := 1 to N do
+    for j := 1 to N do
+    begin
+      A[i, j] := (i - 1) * N + j;
+      B[i, j] := N * (N - i + 1) - (j - 1);
+    end;
+
+  for i := 1 to N do
+    for j := 1 to N do
+      C[i, j] := 0;
+
+  // Multiplicación de matrices
+  for i := 1 to N do
+    for j := 1 to N do
+      for k := 1 to N do
+        C[i, j] := C[i, j] + A[i, k] * B[k, j];
+
+  writeln('Matriz A:');
+  for i := 1 to N do
+  begin
+    for j := 1 to N do
+      write(A[i, j]:4);
+    writeln;
+  end;
+
+  writeln('Matriz B:');
+  for i := 1 to N do
+  begin
+    for j := 1 to N do
+      write(B[i, j]:4);
+    writeln;
+  end;
+
+  writeln('Resultado de A * B:');
+  for i := 1 to N do
+  begin
+    for j := 1 to N do
+      write(C[i, j]:4);
+    writeln;
+  end;
+end.
