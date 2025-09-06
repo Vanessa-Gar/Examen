@@ -1,0 +1,35 @@
+public class Cronometro {
+    public static void main(String[] args) {
+        int horas = 0;
+        int minutos = 0;
+        int segundos = 0;
+
+        System.out.println("Presiona Enter para iniciar el cronómetro.");
+        try {
+            System.in.read();
+        } catch (Exception e) {}
+        
+        System.out.println("Presiona Ctrl+C para detener el cronómetro.");
+
+        while (true) {
+            try {
+                Thread.sleep(1000); 
+                segundos++;
+
+                if (segundos == 60) {
+                    segundos = 0;
+                    minutos++;
+                    if (minutos == 60) {
+                        minutos = 0;
+                        horas++;
+                    }
+                }
+                
+                System.out.printf("\rTiempo: %02d:%02d:%02d", horas, minutos, segundos);
+                
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
