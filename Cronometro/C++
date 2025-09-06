@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip>
+#include <thread>
+#include <chrono>
+
+int main() {
+    int horas = 0;
+    int minutos = 0;
+    int segundos = 0;
+
+    std::cout << "Presiona Enter para iniciar el cronómetro." << std::endl;
+    std::cin.get();
+    
+    std::cout << "Presiona Ctrl+C para detener el cronómetro." << std::endl;
+
+    while (true) {
+        segundos++;
+        if (segundos == 60) {
+            segundos = 0;
+            minutos++;
+            if (minutos == 60) {
+                minutos = 0;
+                horas++;
+            }
+        }
+        
+        std::cout << "\r" << "Tiempo: "
+                  << std::setfill('0') << std::setw(2) << horas << ":"
+                  << std::setfill('0') << std::setw(2) << minutos << ":"
+                  << std::setfill('0') << std::setw(2) << segundos;
+        std::cout.flush();
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
+    return 0;
+}
+
